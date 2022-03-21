@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Container } from '../../globalStyles';
 import HeroVideo from '../../assets/videos/herovideo.mp4';
 import { COLORS } from '../../utils/colors';
 
 const MainHero = () => {
-	useEffect(() => {}, []);
 	return (
 		<Hero>
 			<HeroContainer>
@@ -25,9 +24,9 @@ const MainHero = () => {
 							<Button>Get Quote</Button>
 						</ButtonContainer>
 					</TextContent>
-					<FormWrapper>
+					{/* <FormWrapper>
 						<Form></Form>
-					</FormWrapper>
+					</FormWrapper> */}
 				</HeroContent>
 			</HeroContainer>
 		</Hero>
@@ -124,11 +123,11 @@ const TextContent = styled.div`
 	}
 `;
 
-const FormWrapper = styled.div`
-	flex-grow: 1;
-	display: flex;
-	justify-content: flex-end;
-`;
+// const FormWrapper = styled.div`
+// 	flex-grow: 1;
+// 	display: flex;
+// 	justify-content: flex-end;
+// `;
 
 const ButtonContainer = styled.div`
 	display: flex;
@@ -144,9 +143,9 @@ const Button = styled.button`
 	border-radius: 4px;
 `;
 
-const Form = styled.form`
-	width: 400px;
-	height: 450px;
-	border-radius: 8px;
-	background-color: ${COLORS.white};
-`;
+// const Form = styled.form`
+// 	width: 400px;
+// 	height: 450px;
+// 	border-radius: 8px;
+// 	background-color: ${COLORS.white};
+// `;
