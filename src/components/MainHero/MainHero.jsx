@@ -13,12 +13,14 @@ const MainHero = () => {
 				</Video>
 				<HeroContent>
 					<TextContent>
-						<h1>Lorem ipsum dolor sit amet</h1>
-						<p>
+						<h1>
+							Private Travel <br /> Travel & Enjoy with us
+						</h1>
+						{/* <p>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
 							alias reprehenderit et amet sequi earum hic dolor voluptatum totam
 							doloremque.
-						</p>
+						</p> */}
 						<ButtonContainer>
 							<Button>Call Us</Button>
 							<Button>Get Quote</Button>
@@ -58,7 +60,7 @@ const Hero = styled.div`
 		content: '';
 		z-index: 10;
 		position: absolute;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.7);
 		width: 100%;
 		height: 100%;
 		top: 0;
@@ -95,12 +97,12 @@ const HeroContent = styled.div`
 const TextContent = styled.div`
 	flex-grow: 1;
 	display: flex;
-	width: 30%;
 	gap: 1rem;
 	flex-direction: column;
 
 	h1 {
-		font-size: 50px;
+		font-size: 6rem;
+		font-weight: 700;
 	}
 
 	p {
@@ -111,8 +113,12 @@ const TextContent = styled.div`
 		text-align: center;
 		align-items: center;
 		justify-content: center;
-		width: 70%;
+		h1 {
+			font-size: 40px;
+		}
+	}
 
+	@media screen and (max-width: 768px) {
 		h1 {
 			font-size: 30px;
 		}
@@ -137,10 +143,21 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button`
 	display: inline-block;
-	padding: 0.6rem 1.3rem;
+	padding: 1rem 2.5rem;
 	border: 1px solid transparent;
 	outline: none;
+	font-size: 1.5rem;
 	border-radius: 4px;
+
+	@media screen and (max-width: 1024px) {
+		padding: 0.8rem 1.5rem;
+		font-size: 18px;
+	}
+
+	@media screen and (max-width: 768px) {
+		padding: 0.8rem 1.5rem;
+		font-size: 14px;
+	}
 `;
 
 // const Form = styled.form`
