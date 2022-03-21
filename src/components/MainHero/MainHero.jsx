@@ -60,7 +60,7 @@ const Hero = styled.div`
 		content: '';
 		z-index: 10;
 		position: absolute;
-		background: rgba(0, 0, 0, 0.7);
+		background: rgba(0, 0, 0, 0.5);
 		width: 100%;
 		height: 100%;
 		top: 0;
