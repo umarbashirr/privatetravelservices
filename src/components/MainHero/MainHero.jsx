@@ -113,6 +113,7 @@ const TextContent = styled.div`
 		text-align: center;
 		align-items: center;
 		justify-content: center;
+
 		h1 {
 			font-size: 40px;
 		}
@@ -148,6 +149,7 @@ const Button = styled.button`
 	outline: none;
 	font-size: 1.5rem;
 	border-radius: 4px;
+	font-weight: 500;
 
 	@media screen and (max-width: 1024px) {
 		padding: 0.8rem 1.5rem;
