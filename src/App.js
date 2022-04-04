@@ -12,12 +12,14 @@ import {
 	ContactPage,
 	ErrorPage,
 } from './pages';
+import { MobileNavigation } from './components';
 
 function App() {
 	return (
 		<>
 			<AppContainer>
 				<Navbar />
+				<MobileNavigation />
 				<MainContainer>
 					<Routes>
 						<Route path='/' element={<Home />} />

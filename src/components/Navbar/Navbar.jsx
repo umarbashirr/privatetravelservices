@@ -1,82 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { Container } from '../../globalStyles';
-import { COLORS } from '../../utils/colors';
-import { HiMenuAlt3 } from 'react-icons/hi';
 import { routes } from '../../utils/utils';
+import {
+	AppBar,
+	Toolbar,
+	Box,
+	Typography,
+	Stack,
+	IconButton,
+	Drawer,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemText,
+	Button,
+} from '@mui/material';
+import { Close, Dehaze } from '@mui/icons-material';
 
 const Navbar = () => {
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	return (
-		<Header>
-			<Container>
-				<Nav>
-					<Logo to='/'>PTS</Logo>
-					<Toggler>
-						<HiMenuAlt3 />
-					</Toggler>
-					<Menu>
-						{routes.map((route, index) => {
-							const { label, path } = route;
-							return (
-								<Item to={path} key={index}>
-									{label}
-								</Item>
-							);
-						})}
-					</Menu>
-				</Nav>
-			</Container>
-		</Header>
+		<AppBar sx={{ background: 'transparent' }} position='fixed'>
+			<Toolbar>
+				<Typography component='div' sx={{ flexGrow: 1 }}>
+					PTS
+				</Typography>
+				<IconButton
+					onClick={() => {
+						setIsDrawerOpen(true);
+					}}
+					color='warning'
+					sx={{ display: { xs: 'flex', md: 'none' } }}
+				>
+					{isDrawerOpen ? <Close /> : <Dehaze />}
+				</IconButton>
+				<Drawer
+					anchor='left'
+					open={isDrawerOpen}
+					onClose={() => setIsDrawerOpen(false)}
+					sx={{ display: { xs: 'flex', md: 'none' } }}
+				>
+					<Box p={2} role='presentation' width={350}>
+						<List>
+							{routes.map((route, index) => {
+								const { label, path } = route;
+								return (
+									<ListItem disablePadding key={index}>
+										<ListItemButton
+											onClick={() => setIsDrawerOpen(false)}
+											color='dark'
+										>
+											<Link
+												to={path}
+												style={{
+													textDecoration: 'none',
+													color: '#555',
+												}}
+											>
+												<ListItemText>{label}</ListItemText>
+											</Link>
+										</ListItemButton>
+									</ListItem>
+								);
+							})}
+						</List>
+					</Box>
+				</Drawer>
+				<Stack
+					direction='row'
+					spacing={2}
+					sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
+				>
+					{routes.map((route, index) => {
+						const { label, path } = route;
+						return (
+							<Link
+								to={path}
+								key={index}
+								style={{
+									textDecoration: 'none',
+									color: '#fff',
+								}}
+							>
+								{label}
+							</Link>
+						);
+					})}
+				</Stack>
+			</Toolbar>
+		</AppBar>
 	);
 };
 
 export default Navbar;
-
-const Header = styled.header`
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
-	flex-shrink: 0;
-	color: #fff;
-	height: 60px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	background: rgba(0, 0, 0, 0.5);
-`;
-
-const Nav = styled.nav`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-`;
-
-const Logo = styled(Link)`
-	color: ${COLORS.white};
-`;
-
-const Toggler = styled.div`
-	color: ${COLORS.white};
-	display: flex;
-	font-size: 22px;
-	cursor: pointer;
-
-	@media screen and (min-width: 768px) {
-		display: none;
-	}
-`;
-
-const Menu = styled.div`
-	display: none;
-
-	@media screen and (min-width: 768px) {
-		display: flex;
-		gap: 1rem;
-	}
-`;
-
-const Item = styled(Link)`
-	color: ${COLORS.white};
-`;
