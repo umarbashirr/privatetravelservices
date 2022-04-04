@@ -30,7 +30,7 @@ const Navbar = () => {
 						setIsDrawerOpen(true);
 					}}
 					color='warning'
-					sx={{ display: { xs: 'flex', md: 'none' } }}
+					sx={{ display: { xs: 'flex', md: 'none' }, color: '#fff' }}
 				>
 					{isDrawerOpen ? <Close /> : <Dehaze />}
 				</IconButton>
