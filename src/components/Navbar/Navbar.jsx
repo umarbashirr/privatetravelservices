@@ -5,7 +5,6 @@ import {
 	AppBar,
 	Toolbar,
 	Box,
-	Typography,
 	Stack,
 	IconButton,
 	Drawer,
@@ -13,81 +12,95 @@ import {
 	ListItem,
 	ListItemButton,
 	ListItemText,
-	Button,
+	Container,
 } from '@mui/material';
 import { Close, Dehaze } from '@mui/icons-material';
+import logo from '../../assets/images/logo.png';
 
 const Navbar = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	return (
 		<AppBar sx={{ background: 'transparent' }} position='fixed'>
-			<Toolbar>
-				<Typography component='div' sx={{ flexGrow: 1 }}>
-					PTS
-				</Typography>
-				<IconButton
-					onClick={() => {
-						setIsDrawerOpen(true);
-					}}
-					color='warning'
-					sx={{ display: { xs: 'flex', md: 'none' }, color: '#fff' }}
-				>
-					{isDrawerOpen ? <Close /> : <Dehaze />}
-				</IconButton>
-				<Drawer
-					anchor='left'
-					open={isDrawerOpen}
-					onClose={() => setIsDrawerOpen(false)}
-					sx={{ display: { xs: 'flex', md: 'none' } }}
-				>
-					<Box p={2} role='presentation' width={350}>
-						<List>
-							{routes.map((route, index) => {
-								const { label, path } = route;
-								return (
-									<ListItem disablePadding key={index}>
-										<ListItemButton
-											onClick={() => setIsDrawerOpen(false)}
-											color='dark'
-										>
-											<Link
-												to={path}
-												style={{
-													textDecoration: 'none',
-													color: '#555',
-												}}
+			<Container maxWidth='lg'>
+				<Toolbar>
+					<Box
+						component='img'
+						src={logo}
+						alt='Private Travel Services'
+						width={100}
+					/>
+					<IconButton
+						onClick={() => {
+							setIsDrawerOpen(true);
+						}}
+						color='warning'
+						sx={{
+							display: { xs: 'flex', md: 'none' },
+							color: '#fff',
+							marginLeft: 'auto',
+						}}
+					>
+						{isDrawerOpen ? <Close /> : <Dehaze />}
+					</IconButton>
+					<Drawer
+						anchor='left'
+						open={isDrawerOpen}
+						onClose={() => setIsDrawerOpen(false)}
+						sx={{ display: { xs: 'flex', md: 'none' } }}
+					>
+						<Box p={2} role='presentation' width={350}>
+							<List>
+								{routes.map((route, index) => {
+									const { label, path } = route;
+									return (
+										<ListItem disablePadding key={index}>
+											<ListItemButton
+												onClick={() => setIsDrawerOpen(false)}
+												color='dark'
 											>
-												<ListItemText>{label}</ListItemText>
-											</Link>
-										</ListItemButton>
-									</ListItem>
-								);
-							})}
-						</List>
-					</Box>
-				</Drawer>
-				<Stack
-					direction='row'
-					spacing={2}
-					sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}
-				>
-					{routes.map((route, index) => {
-						const { label, path } = route;
-						return (
-							<Link
-								to={path}
-								key={index}
-								style={{
-									textDecoration: 'none',
-									color: '#fff',
-								}}
-							>
-								{label}
-							</Link>
-						);
-					})}
-				</Stack>
-			</Toolbar>
+												<Link
+													to={path}
+													style={{
+														textDecoration: 'none',
+														color: '#555',
+													}}
+												>
+													<ListItemText>{label}</ListItemText>
+												</Link>
+											</ListItemButton>
+										</ListItem>
+									);
+								})}
+							</List>
+						</Box>
+					</Drawer>
+					<Stack
+						direction='row'
+						spacing={2}
+						sx={{
+							display: { xs: 'none', md: 'flex' },
+							alignItems: 'center',
+							marginLeft: 'auto',
+						}}
+					>
+						{routes.map((route, index) => {
+							const { label, path } = route;
+							return (
+								<Link
+									to={path}
+									key={index}
+									style={{
+										textDecoration: 'none',
+										color: '#fff',
+									}}
+								>
+									{label}
+								</Link>
+							);
+						})}
+					</Stack>
+				</Toolbar>
+			</Container>
 		</AppBar>
 	);
 };

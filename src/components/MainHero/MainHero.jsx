@@ -1,36 +1,54 @@
+import { Container, Grid, Box, Stack, Button } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../../globalStyles';
 import HeroVideo from '../../assets/videos/herovideo.mp4';
 import { COLORS } from '../../utils/colors';
+import HeroLogo from '../../assets/images/heroLogo.svg';
+import { Phone, WhatsApp } from '@mui/icons-material';
 
 const MainHero = () => {
 	return (
 		<Hero>
-			<HeroContainer>
+			<Container maxWidth={'xl'}>
 				<Video loop='true' autoPlay='true' muted='true' preload='auto'>
 					<source src={HeroVideo} type='video/mp4' />
 				</Video>
 				<HeroContent>
-					<TextContent>
-						<h1>
-							Private Travel <br /> Travel & Enjoy with us
-						</h1>
-						{/* <p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-							alias reprehenderit et amet sequi earum hic dolor voluptatum totam
-							doloremque.
-						</p> */}
-						<ButtonContainer>
-							<Button>Call Us</Button>
-							<Button>Get Quote</Button>
-						</ButtonContainer>
-					</TextContent>
-					{/* <FormWrapper>
-						<Form></Form>
-					</FormWrapper> */}
+					<Box
+						flexDirection='column'
+						sx={{
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+						}}
+					>
+						<Grid container>
+							<Grid
+								item
+								lg={12}
+								md={12}
+								xs={12}
+								sx={{ display: 'flex', justifyContent: 'center' }}
+							>
+								<Box
+									component='img'
+									src={HeroLogo}
+									sx={{ width: { xs: '350px', md: '500px' } }}
+								/>
+							</Grid>
+						</Grid>
+						<Stack direction='row' spacing={2} sx={{ mt: '-50px' }}>
+							<Button variant='contained' endIcon={<Phone />}>
+								Call Us
+							</Button>
+
+							<Button variant='contained' endIcon={<WhatsApp />}>
+								WhatsApp
+							</Button>
+						</Stack>
+					</Box>
 				</HeroContent>
-			</HeroContainer>
+			</Container>
 		</Hero>
 	);
 };
@@ -44,18 +62,6 @@ const Hero = styled.div`
 	align-items: center;
 	justify-content: center;
 
-	/* @media screen and (max-width: 1024px) {
-		height: 80vh;
-	}
-
-	@media screen and (max-width: 768px) {
-		height: 50vh;
-	}
-
-	@media screen and (max-width: 550px) {
-		height: 30vh;
-	} */
-
 	&::after {
 		content: '';
 		z-index: 10;
@@ -68,8 +74,6 @@ const Hero = styled.div`
 		left: 0;
 	}
 `;
-
-const HeroContainer = styled(Container)``;
 
 const Video = styled.video`
 	position: absolute;
@@ -85,6 +89,7 @@ const HeroContent = styled.div`
 	position: relative;
 	height: 100%;
 	display: flex;
+	justify-content: center;
 	gap: 3rem;
 	align-items: center;
 	color: ${COLORS.white};
@@ -93,78 +98,3 @@ const HeroContent = styled.div`
 		flex-direction: column;
 	}
 `;
-
-const TextContent = styled.div`
-	flex-grow: 1;
-	display: flex;
-	gap: 1rem;
-	flex-direction: column;
-
-	h1 {
-		font-size: 6rem;
-		font-weight: 700;
-	}
-
-	p {
-		font-size: 20px;
-	}
-
-	@media screen and (max-width: 1024px) {
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-
-		h1 {
-			font-size: 40px;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		h1 {
-			font-size: 30px;
-		}
-
-		p {
-			font-size: 16px;
-		}
-	}
-`;
-
-// const FormWrapper = styled.div`
-// 	flex-grow: 1;
-// 	display: flex;
-// 	justify-content: flex-end;
-// `;
-
-const ButtonContainer = styled.div`
-	display: flex;
-	gap: 1rem;
-	margin-top: 1rem;
-`;
-
-const Button = styled.button`
-	display: inline-block;
-	padding: 1rem 2.5rem;
-	border: 1px solid transparent;
-	outline: none;
-	font-size: 1.5rem;
-	border-radius: 4px;
-	font-weight: 500;
-
-	@media screen and (max-width: 1024px) {
-		padding: 0.8rem 1.5rem;
-		font-size: 18px;
-	}
-
-	@media screen and (max-width: 768px) {
-		padding: 0.8rem 1.5rem;
-		font-size: 14px;
-	}
-`;
-
-// const Form = styled.form`
-// 	width: 400px;
-// 	height: 450px;
-// 	border-radius: 8px;
-// 	background-color: ${COLORS.white};
-// `;
