@@ -1,13 +1,15 @@
+import { Container, Typography } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../../globalStyles';
 import { COLORS } from '../../utils/colors';
 
 const PageHero = ({ title }) => {
 	return (
 		<Hero>
-			<Container>
-				<h1>{title}</h1>
+			<Container maxWidth='lg'>
+				<Typography variant='h1' sx={{ fontSize: '44px', fontWeight: 'bold' }}>
+					{title}
+				</Typography>
 			</Container>
 		</Hero>
 	);
@@ -16,8 +18,9 @@ const PageHero = ({ title }) => {
 export default PageHero;
 
 const Hero = styled.div`
-	padding: 100px 0;
-	padding-top: 130px;
+	padding: 150px 0;
+	padding-top: 210px;
 	background-color: ${COLORS.primary};
 	color: ${COLORS.white};
+	position: relative;
 `;
