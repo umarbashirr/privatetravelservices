@@ -21,10 +21,25 @@ import DrawerLogo from '../../assets/images/logodark.jpg';
 
 const Navbar = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	const changeNavbarColor = () => {
+		if (window.scrollY >= 100) {
+			setIsScrolled(true);
+		} else {
+			setIsScrolled(false);
+		}
+	};
+
+	window.addEventListener('scroll', changeNavbarColor);
+
 	return (
-		<AppBar sx={{ background: 'transparent' }} position='fixed'>
+		<AppBar
+			sx={{ background: !isScrolled ? 'transparent' : '#58567d' }}
+			position='fixed'
+		>
 			<Container maxWidth='lg'>
-				<Toolbar>
+				<Toolbar sx={{ height: '100%' }}>
 					<Box
 						component='img'
 						src={logo}
