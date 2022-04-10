@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { routes } from '../../utils/utils';
 import {
 	AppBar,
@@ -16,8 +17,10 @@ import {
 	Button,
 } from '@mui/material';
 import { Close, Dehaze } from '@mui/icons-material';
-import logo from '../../assets/images/logo.png';
+import whiteLogo from '../../assets/images/logo.png';
+import darkLogo from '../../assets/images/logodark.jpg';
 import DrawerLogo from '../../assets/images/logodark.jpg';
+import { COLORS } from '../../utils/colors';
 
 const Navbar = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -35,14 +38,17 @@ const Navbar = () => {
 
 	return (
 		<AppBar
-			sx={{ background: !isScrolled ? 'transparent' : '#58567d' }}
+			sx={{
+				background: !isScrolled ? 'transparent' : '#fff',
+				boxShadow: isScrolled ? '0 1px 6px #444' : 'none',
+			}}
 			position='fixed'
 		>
 			<Container maxWidth='lg'>
 				<Toolbar sx={{ height: '100%' }}>
 					<Box
 						component='img'
-						src={logo}
+						src={!isScrolled ? whiteLogo : darkLogo}
 						alt='Private Travel Services'
 						width={100}
 					/>
@@ -119,16 +125,9 @@ const Navbar = () => {
 						{routes.map((route, index) => {
 							const { label, path } = route;
 							return (
-								<Link
-									to={path}
-									key={index}
-									style={{
-										textDecoration: 'none',
-										color: '#fff',
-									}}
-								>
+								<NavLink to={path} key={index} isScrolled={isScrolled}>
 									{label}
-								</Link>
+								</NavLink>
 							);
 						})}
 					</Stack>
@@ -139,3 +138,34 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const NavLink = styled(Link)`
+	text-decoration: none;
+	color: ${({ isScrolled }) => (isScrolled ? COLORS.primary : '#fff')};
+	position: relative;
+	font-weight: 500;
+
+	&:hover {
+		color: orange;
+	}
+
+	&:active {
+		color: orange;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -60%;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background-color: orange;
+		border-radius: 50px;
+		transition: 0.7s ease;
+	}
+
+	&:hover::after {
+		width: 100%;
+	}
+`;
