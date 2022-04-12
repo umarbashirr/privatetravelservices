@@ -2,13 +2,20 @@ import { Container, Typography } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../utils/colors';
-import backgroundImage from '../../assets/images/pageHeroImage.jpg';
 
-const PageHero = ({ title }) => {
+const PageHero = ({ title, image }) => {
 	return (
-		<Hero>
+		<Hero image={image}>
 			<Container maxWidth='lg'>
-				<Typography variant='h1' sx={{ fontSize: '44px', fontWeight: 'bold' }}>
+				<Typography
+					variant='h1'
+					sx={{
+						fontSize: '60px',
+						fontWeight: 'bold',
+						textAlign: 'center',
+						textTransform: 'capitalize',
+					}}
+				>
 					{title}
 				</Typography>
 			</Container>
@@ -26,7 +33,7 @@ const Hero = styled.div`
 			rgba(230, 7, 118, 0.7),
 			rgba(25, 37, 209, 0.7)
 		),
-		url(${backgroundImage});
+		url(${({ image }) => (image ? image : null)});
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;

@@ -27,7 +27,7 @@ const Navbar = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	const changeNavbarColor = () => {
-		if (window.scrollY >= 100) {
+		if (window.scrollY >= 80) {
 			setIsScrolled(true);
 		} else {
 			setIsScrolled(false);
@@ -44,7 +44,7 @@ const Navbar = () => {
 			}}
 			position='fixed'
 		>
-			<Container maxWidth='lg'>
+			<Container maxWidth='xl'>
 				<Toolbar sx={{ height: '100%' }}>
 					<Box
 						component='img'

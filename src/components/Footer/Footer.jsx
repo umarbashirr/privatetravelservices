@@ -1,12 +1,27 @@
+import { Box, Container, Typography } from '@mui/material';
 import React from 'react';
-import styled from 'styled-components';
+import { COLORS } from '../../utils/colors';
 
 const Footer = () => {
-	return <FooterContainer>Footer</FooterContainer>;
+	return (
+		<Box
+			component='footer'
+			sx={{
+				backgroundColor: COLORS.primary,
+				color: COLORS.white,
+				zIndex: 10,
+			}}
+		>
+			<Container maxWidth='lg'>
+				<Box sx={{ textAlign: 'center', p: 6 }}>
+					<Typography variant='body1'>
+						Copyrighted &copy; 2022 by Private Travel Services. All Rights
+						Reserved.
+					</Typography>
+				</Box>
+			</Container>
+		</Box>
+	);
 };
 
 export default Footer;
-
-const FooterContainer = styled.footer`
-	flex-shrink: 0;
-`;
