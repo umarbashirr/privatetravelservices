@@ -1,7 +1,22 @@
 import React from 'react';
-import { Stack, Typography, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Stack, Typography, Box, Button } from '@mui/material';
 
-const TwoColumnBox = ({ title, image, imageAlt, reversed, text }) => {
+const TwoColumnBox = ({
+	title,
+	image,
+	imageAlt,
+	reversed,
+	desc,
+	button,
+	buttonLink,
+}) => {
+	const navigate = useNavigate();
+
+	const navigatePage = (link) => {
+		navigate(link, { replace: true });
+	};
+
 	return (
 		<Box
 			display='flex'
@@ -31,13 +46,22 @@ const TwoColumnBox = ({ title, image, imageAlt, reversed, text }) => {
 				<Typography variant='h4' component='h3' fontWeight='bold'>
 					{title}
 				</Typography>
-				{text.map((para, index) => {
+				{desc.map((para, index) => {
 					return (
 						<Typography key={index} sx={{ fontSize: '18px' }}>
 							{para}
 						</Typography>
 					);
 				})}
+				{button && (
+					<Button
+						variant='contained'
+						sx={{ alignSelf: 'flex-start' }}
+						onClick={() => navigatePage(buttonLink)}
+					>
+						{button}
+					</Button>
+				)}
 			</Stack>
 		</Box>
 	);

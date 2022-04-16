@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { routes } from '../../utils/utils';
 import {
@@ -24,13 +24,18 @@ import { COLORS } from '../../utils/colors';
 
 const Navbar = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-	const [isScrolled, setIsScrolled] = useState(false);
+	const [isscrolled, setisscrolled] = useState(false);
+	const navigate = useNavigate();
+
+	const navigatePage = (path) => {
+		navigate(path);
+	};
 
 	const changeNavbarColor = () => {
 		if (window.scrollY >= 80) {
-			setIsScrolled(true);
+			setisscrolled(true);
 		} else {
-			setIsScrolled(false);
+			setisscrolled(false);
 		}
 	};
 
@@ -39,8 +44,8 @@ const Navbar = () => {
 	return (
 		<AppBar
 			sx={{
-				background: !isScrolled ? 'transparent' : '#fff',
-				boxShadow: isScrolled ? '0 1px 6px #444' : 'none',
+				background: !isscrolled ? 'transparent' : '#fff',
+				boxShadow: isscrolled ? '0 1px 6px #444' : 'none',
 			}}
 			position='fixed'
 		>
@@ -48,7 +53,7 @@ const Navbar = () => {
 				<Toolbar sx={{ height: '100%' }}>
 					<Box
 						component='img'
-						src={!isScrolled ? whiteLogo : darkLogo}
+						src={!isscrolled ? whiteLogo : darkLogo}
 						alt='Private Travel Services'
 						width={100}
 					/>
@@ -122,10 +127,24 @@ const Navbar = () => {
 							marginLeft: 'auto',
 						}}
 					>
+						{/* {routes.map((route, index) => {
+							const { label, path } = route;
+							return (
+								<NavLink to={path} key={index} isscrolled={isscrolled}>
+									{label}
+								</NavLink>
+							);
+						})} */}
 						{routes.map((route, index) => {
 							const { label, path } = route;
 							return (
-								<NavLink to={path} key={index} isScrolled={isScrolled}>
+								<NavLink
+									onClick={() => {
+										navigatePage(path);
+									}}
+									key={index}
+									isscrolled={isscrolled}
+								>
 									{label}
 								</NavLink>
 							);
@@ -139,9 +158,12 @@ const Navbar = () => {
 
 export default Navbar;
 
-const NavLink = styled(Link)`
+const NavLink = styled.button`
+	background: transparent;
+	border: none;
+	font-size: 1rem;
 	text-decoration: none;
-	color: ${({ isScrolled }) => (isScrolled ? COLORS.primary : '#fff')};
+	color: ${({ isscrolled }) => (isscrolled ? COLORS.primary : '#fff')};
 	position: relative;
 	font-weight: 500;
 

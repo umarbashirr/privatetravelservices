@@ -10,7 +10,7 @@ const MainHero = () => {
 	return (
 		<Hero>
 			<Container maxWidth={'xl'}>
-				<Video loop='true' autoPlay='true' muted='true' preload='auto'>
+				<Video loop={true} autoPlay={true} muted={true} preload='auto'>
 					<source src={HeroVideo} type='video/mp4' />
 				</Video>
 				<HeroContent>

@@ -1,11 +1,15 @@
+import { Container } from '@mui/material';
 import React from 'react';
-import { PageHero } from '../../components';
+import { PageHero, TwoColumnBox } from '../../components';
+import { AboutPageData } from '../../utils/data';
 
 const AboutPage = () => {
 	return (
 		<div>
 			<PageHero title='About Us' />
-			AboutPage
+			<Container maxWidth='lg'>
+				<TwoColumnBox {...AboutPageData.whoWeAre} reversed />
+			</Container>
 		</div>
 	);
 };
