@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { routes } from '../../utils/utils';
+import { routes } from '../../utils/data';
 import {
 	AppBar,
 	Toolbar,
@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { Close, Dehaze } from '@mui/icons-material';
 import whiteLogo from '../../assets/images/logo.png';
-import darkLogo from '../../assets/images/logodark.jpg';
+import darkLogo from '../../assets/images/logodark-removebg-preview.png';
 import DrawerLogo from '../../assets/images/logodark.jpg';
 import { COLORS } from '../../utils/colors';
 
@@ -64,7 +64,7 @@ const Navbar = () => {
 						color='warning'
 						sx={{
 							display: { xs: 'flex', md: 'none' },
-							color: '#fff',
+							color: !isscrolled ? '#fff' : COLORS.primary,
 							marginLeft: 'auto',
 						}}
 					>

@@ -5,6 +5,8 @@ import MainHero from './MainHero/MainHero';
 import PageHero from './PageHero/PageHero';
 import ContactForm from './ContactForm/ContactForm';
 import TwoColumnBox from './TwoColumnBox/TwoColumnBox';
+import IconCard from './IconCard/IconCard';
+import Features from './Features/Features';
 
 export {
 	Navbar,
@@ -14,4 +16,6 @@ export {
 	PageHero,
 	ContactForm,
 	TwoColumnBox,
+	IconCard,
+	Features,
 };

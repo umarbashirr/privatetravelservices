@@ -10,6 +10,7 @@ const Footer = () => {
 				backgroundColor: COLORS.primary,
 				color: COLORS.white,
 				zIndex: 10,
+				marginTop: { xs: '50', md: '100px' },
 			}}
 		>
 			<Container maxWidth='lg'>

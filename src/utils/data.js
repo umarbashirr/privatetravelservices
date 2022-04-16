@@ -1,3 +1,33 @@
+import {
+	AccessTime,
+	BusinessCenter,
+	CompareArrows,
+	ContentPasteSearch,
+} from '@mui/icons-material';
+
+export const routes = [
+	{
+		path: '/',
+		label: 'Home',
+	},
+	{
+		path: '/about',
+		label: 'About Us',
+	},
+	{
+		path: '/travel',
+		label: 'Travel',
+	},
+	{
+		path: '/hospitality',
+		label: 'Hospitality',
+	},
+	{
+		path: '/contact',
+		label: 'Contact Us',
+	},
+];
+
 export const TravelPageData = [
 	{
 		id: 1,
@@ -53,38 +83,54 @@ export const AboutPageData = {
 	features: [
 		{
 			id: 1,
+			icon: <CompareArrows fontSize='large' />,
 			label: 'Flexibility',
 		},
 		{
 			id: 2,
+			icon: <BusinessCenter fontSize='large' />,
 			label: 'Experience',
 		},
 		{
 			id: 3,
+			icon: <ContentPasteSearch fontSize='large' />,
 			label: 'Detail Matters',
 		},
 		{
 			id: 4,
+			icon: <AccessTime fontSize='large' />,
 			label: '24/7',
 		},
 	],
+
+	// Banner Data
+
+	bannerData: {
+		image: require('../assets/images/aboutimage.jpg'),
+		imageAlt: 'Team working on project',
+	},
+
 	// Vision, Mission & Values Section
 	coreValues: [
 		{
+			image: require('../assets/images/aboutimage.jpg'),
 			title: 'Vision',
 			desc: [
 				'We strive to be at the forefront of companies in the field of travel and tourism in the kingdom by providing the best services and options to our customers, through an integrated and professional team that is passionate about developing itself to serve our customers to the fullest. ',
 				'We also seek to encourage the tourism industry in the Kingdom and provide a model for national companies to promote the diversification of the local economy.',
 			],
+			reversed: true,
 		},
 		{
 			title: 'Mission',
+			image: require('../assets/images/aboutimage.jpg'),
 			desc: [
 				'To provide the optimal image of the tourism companies in the region with the right perspective of the highest standards of quality and detail ensuring that the requests and desires of our customers are met and achieved in detail as they want.',
 			],
 		},
 		{
 			title: 'Values',
+			image: require('../assets/images/aboutimage.jpg'),
 			desc: [
 				'Save our customers time.',
 				'Strive to win the trust of our customers.',
@@ -93,6 +139,7 @@ export const AboutPageData = {
 				'Commitment ',
 				'Innovation',
 			],
+			reversed: true,
 		},
 	],
 };
